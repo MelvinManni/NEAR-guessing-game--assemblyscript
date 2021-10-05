@@ -19,10 +19,10 @@ export class Game {
   }
 
   playGame(guess: u16): Game {
+    assert(guess >= 0 && guess <= 10, "Guessed value should be within 0 to 10");
     const game = new Game();
     game.guess = guess;
-    assert(game.guess >= 0 && game.guess <= 10, "Guessed value should be within 0 to 10");
-    this.checkIfGameIsWon();
+    game.won = game.guess == game.correctNumber;
     games.push(game);
 
     logging.log("Game successfully entered");
@@ -38,9 +38,5 @@ export class Game {
       result[i] = games[i + startIndex];
     }
     return result;
-  }
-
-  checkIfGameIsWon(): void {
-    this.won = this.correctNumber == this.guess;
   }
 }

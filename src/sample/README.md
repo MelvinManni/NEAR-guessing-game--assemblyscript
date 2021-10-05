@@ -5,15 +5,13 @@
 ### Interface
 
 ```ts
-export function getContacts(accountId: string): Contact[] | null 
+  getGames(): Game[]
 ```
-- "View" function (ie. a function that does NOT alter contract state)
-- Takes account id as a parameters
-- Returns all the contact linked to the account or null if there is no contact
+- "View" method (ie. a function that does NOT alter contract state)
+- Returns an array of games, limited to 10 values to optimize gas fee.
 
 ```ts
 playGame(guess: u16): Game
 ```
-
-- "Change" function (ie. a function that alters contract state)
+- "Change" method (ie. a function that alters contract state)
 - Takes one parameters, a number and creates a new game object with the number. It returns the game played.
